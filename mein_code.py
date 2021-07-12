@@ -26,8 +26,7 @@ class YaUploader:
     def upload(self):
         href = self._get_upload_link(file_path=self.file_path).get("href", "")
         r = requests.put(href, data=open(self.file_path, 'rb'))
-        pprint(r.json())
-        if r.status_code == 200:
+        if r.status_code == 201:
             pprint("Success")
         else:
             pprint(f'Ошибка {r.status_code}')
